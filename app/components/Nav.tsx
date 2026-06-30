@@ -4,6 +4,7 @@ const links = [
   { href: '/', label: 'Dashboard' },
   { href: '/customers', label: 'Müşteriler' },
   { href: '/orders', label: 'Siparişler' },
+  { href: '/chat', label: 'AI Chat' },
 ];
 
 export default function Nav() {
