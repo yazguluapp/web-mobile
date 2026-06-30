@@ -12,7 +12,7 @@ export default function Nav() {
       <div className="max-w-6xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <span className="inline-block w-3 h-3 rounded-full bg-turkcell-yellow" />
-          <span className="font-semibold text-lg">Turkcell · Shop Demo</span>
+          <span className="font-semibold text-lg">Turkcell GCP Class· Shop Demo</span>
         </div>
         <nav className="flex gap-1">
           {links.map((l) => (
