@@ -6,6 +6,7 @@ const links = [
   { href: '/orders', label: 'Siparişler' },
   { href: '/chat', label: 'AI Chat' },
   { href: '/migration', label: 'VM Migration' },
+  { href: '/sunum', label: 'PPT Sunum' },
 ];
 
 export default function Nav() {

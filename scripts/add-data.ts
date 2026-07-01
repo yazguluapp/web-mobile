@@ -19,8 +19,27 @@ const TR_CITIES = [
 ];
 const STATUSES = ['delivered', 'shipped', 'processing', 'cancelled'];
 
+// Türkçe ad/soyad — gerçekçi Türk müşteriler
+const TR_FIRST = [
+  'Ahmet', 'Mehmet', 'Mustafa', 'Ali', 'Hüseyin', 'Hasan', 'İbrahim', 'Emre', 'Burak', 'Cem',
+  'Serkan', 'Onur', 'Barış', 'Kaan', 'Deniz', 'Uğur', 'Volkan', 'Tolga', 'Murat', 'Okan',
+  'Ayşe', 'Fatma', 'Emine', 'Zeynep', 'Elif', 'Merve', 'Büşra', 'Selin', 'Ece', 'Gizem',
+  'Melis', 'Derya', 'Sıla', 'Esra', 'Pınar', 'Ceren', 'Aslı', 'Dilara', 'Nur', 'Yasemin',
+];
+const TR_LAST = [
+  'Yılmaz', 'Kaya', 'Demir', 'Şahin', 'Çelik', 'Yıldız', 'Yıldırım', 'Öztürk', 'Aydın', 'Özdemir',
+  'Arslan', 'Doğan', 'Kılıç', 'Aslan', 'Çetin', 'Kara', 'Koç', 'Kurt', 'Özkan', 'Şimşek',
+  'Polat', 'Korkmaz', 'Çakır', 'Erdoğan', 'Güneş', 'Aktaş', 'Bulut', 'Taş', 'Yalçın', 'Acar',
+];
+
 function pick<T>(arr: T[]): T {
   return arr[Math.floor(faker.number.float({ min: 0, max: arr.length - 0.0001 }))];
+}
+
+// Türkçe karakterleri ASCII'ye indir (e-posta için)
+function asciify(s: string): string {
+  const map: Record<string, string> = { ç: 'c', ğ: 'g', ı: 'i', ö: 'o', ş: 's', ü: 'u', İ: 'i' };
+  return s.toLowerCase().replace(/[çğıöşüİ]/g, (c) => map[c] || c).replace(/[^a-z]/g, '');
 }
 
 function buildPool(): Pool {
@@ -63,11 +82,11 @@ async function main() {
       const params: any[] = [];
       for (let i = 0; i < n; i++) {
         const idx = start + i;
-        const first = faker.person.firstName();
-        const last = faker.person.lastName();
+        const first = pick(TR_FIRST);
+        const last = pick(TR_LAST);
         params.push(
           `${first} ${last}`,
-          `add${stamp}_${idx}@example.com`,
+          `${asciify(first)}.${asciify(last)}.${stamp}_${idx}@example.com`,
           pick(TR_CITIES),
           'Türkiye',
           faker.date.between({ from: '2024-01-01', to: '2025-12-31' }),

@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "seed": "tsx scripts/seed.ts",
-    "add": "tsx scripts/add-data.ts"
+    "add": "tsx scripts/add-data.ts",
+    "boost-toy": "tsx scripts/boost-toy.ts"
   },
   "dependencies": {
     "@google/genai": "^2.10.0",
