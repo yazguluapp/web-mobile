@@ -5,6 +5,7 @@ const links = [
   { href: '/customers', label: 'Müşteriler' },
   { href: '/orders', label: 'Siparişler' },
   { href: '/chat', label: 'AI Chat' },
+  { href: '/migration', label: 'VM Migration' },
 ];
 
 export default function Nav() {
